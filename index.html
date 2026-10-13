@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>📚 Book Bouquets | 🎀 Custom Gifts</title>
+<meta name="description" content="Books and fresh blooms arranged by hand, wrapped in paper, tied with ribbon. Start from our default bouquet of 3 books and 7 blooms, then change anything you like.">
+<meta name="theme-color" content="#faf5ec">
+<meta property="og:title" content="📚 Book Bouquets | 🎀 Custom Gifts">
+<meta property="og:description" content="A story, wrapped in bloom. Build your own book bouquet and see it before you order.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Karla:wght@300..700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#builder">Skip to the bouquet builder</a>
+
+<header class="site-head">
+  <div class="wrap site-head-inner">
+    <a class="wordmark" href="#top">
+      <span class="wordmark-mark" aria-hidden="true">📚</span>
+      <span class="wordmark-text">Book&nbsp;Bouquets</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <ul>
+        <li><a href="#builder">Build</a></li>
+        <li><a href="#packages">Sets</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#gallery">Finished work</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <p class="head-note">🎀 Custom Gifts</p>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Handmade to order · Mon&nbsp;to&nbsp;Sat</p>
+        <h1 id="hero-title">A story, wrapped in bloom.</h1>
+        <p class="lede">
+          Books and fresh flowers arranged by hand, folded into paper, tied with ribbon.
+          Every bouquet starts from the same default and ends up different, because you set the counts.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#builder">Build your bouquet</a>
+          <a class="btn btn-ghost" href="#gallery">See finished work</a>
+        </div>
+        <dl class="hero-facts">
+          <div class="fact">
+            <dt>Default bouquet</dt>
+            <dd>3 books · 7 blooms</dd>
+          </div>
+          <div class="fact">
+            <dt>Starts at</dt>
+            <dd id="hero-from">$44.50</dd>
+          </div>
+          <div class="fact">
+            <dt>Ready in</dt>
+            <dd>3 days</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="hero-figure">
+        <div class="hero-frame">
+          <svg id="hero-bouquet" viewBox="0 0 460 470" role="img" aria-labelledby="hero-bouquet-title hero-bouquet-desc" focusable="false">
+            <title id="hero-bouquet-title">Our default book bouquet</title>
+            <desc id="hero-bouquet-desc">Three books fanned inside kraft paper with seven dusty rose blooms and a ribbon bow.</desc>
+          </svg>
+        </div>
+        <figcaption>
+          <span class="tag-line"><b>Signature</b> · 3 books · 7 blooms · kraft paper</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ─── BUILDER ──────────────────────────────────────────── -->
+  <section class="builder" id="builder" aria-labelledby="builder-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">The counter</p>
+        <h2 id="builder-title">Build your bouquet</h2>
+        <p class="lede">Set how many books and how many blooms, pick the paper and the ribbon, leave a note for the card. The drawing and the price follow along.</p>
+      </header>
+
+      <div class="builder-grid">
+
+        <!-- PREVIEW -->
+        <div class="preview-panel">
+          <div class="preview-frame">
+            <svg id="preview-bouquet" viewBox="0 0 460 470" role="img" aria-labelledby="preview-bouquet-title preview-bouquet-desc" focusable="false">
+              <title id="preview-bouquet-title">Your bouquet</title>
+              <desc id="preview-bouquet-desc">An empty sheet of paper waiting for books and blooms.</desc>
+            </svg>
+            <p class="preview-empty" id="preview-empty" hidden>
+              Nothing wrapped yet. Add a book or a bloom and it will appear here.
+            </p>
+          </div>
+          <div class="preview-foot">
+            <p class="preview-spec" id="preview-spec" role="status">3 books · 7 blooms · Kraft paper</p>
+            <button type="button" class="btn btn-quiet" id="reset-bouquet">Reset to the default</button>
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <form class="controls" id="controls" novalidate>
+
+          <fieldset class="group">
+            <legend class="group-title">Counts</legend>
+            <p class="group-note">This is where most bouquets start. Change it to taste.</p>
+
+            <div class="stepper-row">
+              <div class="stepper">
+                <span class="stepper-label" id="books-label">Books</span>
+                <div class="stepper-controls" role="group" aria-labelledby="books-label">
+                  <button type="button" class="step" data-count="books" data-step="-1" aria-label="One book fewer">
+                    <span aria-hidden="true">−</span>
+                  </button>
+                  <output class="stepper-value" id="books-value">3</output>
+                  <button type="button" class="step" data-count="books" data-step="1" aria-label="One more book">
+                    <span aria-hidden="true">+</span>
+                  </button>
+                </div>
+                <p class="stepper-hint" id="books-hint">2 to 8 for a full fan</p>
+              </div>
+
+              <div class="stepper">
+                <span class="stepper-label" id="blooms-label">Blooms</span>
+                <div class="stepper-controls" role="group" aria-labelledby="blooms-label">
+                  <button type="button" class="step" data-count="flowers" data-step="-1" aria-label="One bloom fewer">
+                    <span aria-hidden="true">−</span>
+                  </button>
+                  <output class="stepper-value" id="flowers-value">7</output>
+                  <button type="button" class="step" data-count="flowers" data-step="1" aria-label="One more bloom">
+                    <span aria-hidden="true">+</span>
+                  </button>
+                </div>
+                <p class="stepper-hint" id="flowers-hint">Up to 24 blooms</p>
+              </div>
+            </div>
+
+            <p class="group-msg" id="count-msg" role="status" hidden></p>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend class="group-title">Bloom colour</legend>
+            <div class="swatch-grid" data-field="bloom">
+              <label class="swatch">
+                <input type="radio" name="bloom" value="rose" checked>
+                <span class="swatch-dot" data-swatch="rose" aria-hidden="true"></span>
+                <span class="swatch-name">Dusty rose</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="bloom" value="ivory">
+                <span class="swatch-dot" data-swatch="ivory" aria-hidden="true"></span>
+                <span class="swatch-name">Ivory</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="bloom" value="terracotta">
+                <span class="swatch-dot" data-swatch="terracotta" aria-hidden="true"></span>
+                <span class="swatch-name">Terracotta</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="bloom" value="lilac">
+                <span class="swatch-dot" data-swatch="lilac" aria-hidden="true"></span>
+                <span class="swatch-name">Lilac</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="bloom" value="sunflower">
+                <span class="swatch-dot" data-swatch="sunflower" aria-hidden="true"></span>
+                <span class="swatch-name">Sunflower</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend class="group-title">Paper</legend>
+            <div class="swatch-grid" data-field="wrap">
+              <label class="swatch">
+                <input type="radio" name="wrap" value="kraft" checked>
+                <span class="swatch-dot" data-swatch="kraft" aria-hidden="true"></span>
+                <span class="swatch-name">Kraft</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="wrap" value="blush">
+                <span class="swatch-dot" data-swatch="blush" aria-hidden="true"></span>
+                <span class="swatch-name">Blush</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="wrap" value="ivory">
+                <span class="swatch-dot" data-swatch="ivory" aria-hidden="true"></span>
+                <span class="swatch-name">Ivory</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="wrap" value="sage">
+                <span class="swatch-dot" data-swatch="sage" aria-hidden="true"></span>
+                <span class="swatch-name">Sage</span>
+              </label>
+              <label class="swatch">
+                <input type="radio" name="wrap" value="charcoal">
+                <span class="swatch-dot" data-swatch="charcoal" aria-hidden="true"></span>
+                <span class="swatch-name">Charcoal</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend class="group-title">Ribbon</legend>
+            <div class="option-list" data-field="ribbon">
+              <label class="option">
+                <input type="radio" name="ribbon" value="satin" checked>
+                <span class="option-name">Satin</span>
+                <span class="option-meta">Included</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="ribbon" value="velvet">
+                <span class="option-name">Velvet</span>
+                <span class="option-meta">+$4.00</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="ribbon" value="twine">
+                <span class="option-name">Twine</span>
+                <span class="option-meta">Included</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="ribbon" value="none">
+                <span class="option-name">No ribbon</span>
+                <span class="option-meta">Leave it plain</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend class="group-title">Reads</legend>
+            <p class="group-note">Tell us the shelf. We pick the titles unless you send a list.</p>
+            <div class="option-list" data-field="theme">
+              <label class="option">
+                <input type="radio" name="theme" value="Romance" checked>
+                <span class="option-name">Romance</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="theme" value="Fantasy">
+                <span class="option-name">Fantasy</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="theme" value="Mystery">
+                <span class="option-name">Mystery</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="theme" value="Self-growth">
+                <span class="option-name">Self-growth</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="theme" value="Children's">
+                <span class="option-name">Children's</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="theme" value="Your picks">
+                <span class="option-name">Your picks</span>
+                <span class="option-meta">Send a list later</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend class="group-title">Extras</legend>
+            <div class="option-list" data-field="extras">
+              <label class="option">
+                <input type="checkbox" name="extras" value="card">
+                <span class="option-name">Handwritten card</span>
+                <span class="option-meta">+$4.00</span>
+              </label>
+              <label class="option">
+                <input type="checkbox" name="extras" value="lights">
+                <span class="option-name">Fairy lights</span>
+                <span class="option-meta">+$6.00</span>
+              </label>
+              <label class="option">
+                <input type="checkbox" name="extras" value="lavender">
+                <span class="option-name">Dried lavender</span>
+                <span class="option-meta">+$5.00</span>
+              </label>
+              <label class="option">
+                <input type="checkbox" name="extras" value="chocolate">
+                <span class="option-name">Chocolate box</span>
+                <span class="option-meta">+$8.00</span>
+              </label>
+            </div>
+
+            <div class="note-field" id="note-field" hidden>
+              <label for="note">Message for the card</label>
+              <textarea id="note" rows="3" maxlength="160" placeholder="Happy birthday, Maya. Chapter one is on us."></textarea>
+              <p class="note-meter" id="note-meter">0 of 160 characters</p>
+              <p class="group-msg" id="note-msg" role="alert" hidden></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend class="group-title">Your details</legend>
+            <p class="group-note">So we can confirm the price and agree a delivery day with you.</p>
+            <div class="field-grid">
+              <div class="field">
+                <label for="customer-name">Your name</label>
+                <input type="text" id="customer-name" name="customer-name" autocomplete="name"
+                       placeholder="Maya Rahman" aria-describedby="customer-name-err">
+                <p class="field-err" id="customer-name-err" hidden></p>
+              </div>
+              <div class="field">
+                <label for="customer-phone">WhatsApp or phone</label>
+                <input type="tel" id="customer-phone" name="customer-phone" autocomplete="tel" inputmode="tel"
+                       placeholder="01701 008038" aria-describedby="customer-phone-err">
+                <p class="field-err" id="customer-phone-err" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="customer-email">Email <span class="field-opt">optional</span></label>
+              <input type="email" id="customer-email" name="customer-email" autocomplete="email"
+                     placeholder="you@example.com" aria-describedby="customer-email-err">
+              <p class="field-err" id="customer-email-err" hidden></p>
+            </div>
+          </fieldset>
+
+          <div class="summary" id="summary">
+            <h3 class="summary-title">Your bouquet</h3>
+            <ul class="line-items" id="line-items"></ul>
+            <div class="total-row">
+              <span class="total-label">Estimated total</span>
+              <span class="total-value" id="total" aria-live="polite">$56.50</span>
+            </div>
+            <p class="fine-print" id="total-note">Final price is confirmed on Facebook once we check what is in the flower market that week.</p>
+            <p class="order-status" id="order-status" role="status" hidden></p>
+            <div class="summary-quiet">
+              <button type="button" class="btn btn-quiet" id="copy-order">Copy order summary</button>
+              <a class="btn btn-quiet" id="messenger-link" href="https://www.facebook.com/" target="_blank" rel="noopener">Message on Facebook</a>
+            </div>
+            <div class="summary-actions">
+              <a class="btn btn-primary" id="order-whatsapp" href="https://wa.me/" target="_blank" rel="noopener">Send on WhatsApp</a>
+              <button type="button" class="btn btn-ghost" id="order-email">Email the order</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRESETS ──────────────────────────────────────────── -->
+  <section class="packages" id="packages" aria-labelledby="packages-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Starting points</p>
+        <h2 id="packages-title">Three counts we make most</h2>
+        <p class="lede">Each one loads into the builder with its counts filled in. Add a book, drop two blooms, swap the paper.</p>
+      </header>
+      <ul class="package-list" id="package-list"></ul>
+    </div>
+  </section>
+
+  <!-- ─── HOW ──────────────────────────────────────────────── -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">The order</p>
+        <h2 id="how-title">How it works</h2>
+      </header>
+      <ol class="steps">
+        <li class="step-item">
+          <span class="step-num" aria-hidden="true">01</span>
+          <h3>Set the counts</h3>
+          <p>Books and blooms first, because those two numbers decide the shape and the price.</p>
+        </li>
+        <li class="step-item">
+          <span class="step-num" aria-hidden="true">02</span>
+          <h3>Send it over</h3>
+          <p>Copy the summary into Messenger. We reply with a photo of the actual blooms we found that morning.</p>
+        </li>
+        <li class="step-item">
+          <span class="step-num" aria-hidden="true">03</span>
+          <h3>Approve the paper</h3>
+          <p>You see the wrap and ribbon choices against your flowers before anything gets cut or folded.</p>
+        </li>
+        <li class="step-item">
+          <span class="step-num" aria-hidden="true">04</span>
+          <h3>Wrapped and delivered</h3>
+          <p>Three days from approval. Local delivery, or pickup from the counter.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ──────────────────────────────────────────── -->
+  <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Finished work</p>
+        <h2 id="gallery-title">Bouquets that left the counter</h2>
+        <p class="lede">Six that went out this season. Tap one to load its counts into the builder.</p>
+      </header>
+      <ul class="gallery-list" id="gallery-list"></ul>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ──────────────────────────────────────────────── -->
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <header class="section-head">
+        <p class="eyebrow">Questions</p>
+        <h2 id="faq-title">Before you order</h2>
+        <p class="lede">Still unsure? Send a photo of the room and we will match the paper to it.</p>
+      </header>
+      <div class="faq-list">
+        <details name="faq">
+          <summary>How many books should I choose?</summary>
+          <p>Two reads as a gift, three is our default and the most balanced fan, five and up looks like a library bouquet. A single book with a heavy ring of blooms is a favourite for anniversaries.</p>
+        </details>
+        <details name="faq">
+          <summary>Can I send my own books?</summary>
+          <p>Yes. Choose <b>Your picks</b> in the Reads section, send the titles, then drop them at the counter or post them to us. We subtract the book cost from the total.</p>
+        </details>
+        <details name="faq">
+          <summary>Are the flowers real?</summary>
+          <p>Fresh blooms, and we swap to whatever the market has that week, keeping the colour you picked. If you need it kept forever, ask for the dried version.</p>
+        </details>
+        <details name="faq">
+          <summary>How far ahead should I order?</summary>
+          <p>Three days for the standard counts. Allow a week if you want a specific title or a colour we have to source in.</p>
+        </details>
+        <details name="faq">
+          <summary>Do you deliver?</summary>
+          <p>Local delivery within the city, and pickup from the counter is free. Larger orders travel by courier, priced at checkout.</p>
+        </details>
+        <details name="faq">
+          <summary>Why does the price differ from the estimate?</summary>
+          <p>The estimate covers books, blooms, paper, and extras. It shifts slightly when a flower is out of season or you swap in a hardback.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <p class="foot-mark">📚 Book&nbsp;Bouquets</p>
+      <p class="foot-line">🎀 Custom Gifts</p>
+      <p class="foot-line">Books and flowers wrapped by hand, in small batches.</p>
+    </div>
+    <div class="foot-col">
+      <h2>Find us</h2>
+      <ul>
+        <li><a id="foot-whatsapp" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a id="foot-email" href="#">Email</a></li>
+        <li><a id="foot-facebook" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook page</a></li>
+        <li><a href="#builder">Build a bouquet</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2>Good to know</h2>
+      <ul>
+        <li>Ready in three days</li>
+        <li>Local delivery and pickup</li>
+        <li>Open Monday to Saturday</li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-base wrap">Prices shown are estimates before delivery.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="toast-text" id="toast-text"></span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
